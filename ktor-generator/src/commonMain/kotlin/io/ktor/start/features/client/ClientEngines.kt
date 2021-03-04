@@ -60,6 +60,13 @@ object CioClientEngine : ClientEngine(CoreClientEngine) {
     override val description = "Engine for the Ktor HttpClient using CIO (Corroutine I/O). Only supports HTTP 1.x."
     override val documentation = "https://ktor.io/docs/http-client-engines.html#cio"
 
+    override val artifacts: List<String> by lazy {
+        listOf(
+            "io.ktor:ktor-client-cio:\$ktor_version",
+            "io.ktor:ktor-client-cio-jvm:\$ktor_version"
+        )
+    }
+    
     override fun BlockBuilder.renderFeature(info: BuildInfo) {
         addImport("io.ktor.client.engine.cio.*")
         clientEngine = "CIO"
